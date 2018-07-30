@@ -10,6 +10,7 @@ class IsItFriday {
     }
 }
 
+
 public class Stepdefs implements En {
 
     private String today;

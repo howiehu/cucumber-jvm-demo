@@ -1,9 +1,18 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    }
 }
 
-sourceCompatibility = 10
-targetCompatibility = 10
+plugins {
+    id 'java'
+    id 'eclipse' // optional (to generate Eclipse project files)
+    id 'idea' // optional (to generate IntelliJ IDEA project files)
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 task cucumber(dependsOn: testClasses) {
     doLast {
@@ -16,13 +25,14 @@ task cucumber(dependsOn: testClasses) {
 }
 
 dependencies {
-    testImplementation 'io.cucumber:cucumber-java8:3.0.2'
-    testImplementation 'io.cucumber:cucumber-junit:3.0.2'
-    testImplementation 'org.assertj:assertj-core:3.10.0'
+    testCompile 'io.cucumber:cucumber-java8:2.+'
+    testCompile 'io.cucumber:cucumber-junit:2.+'
+    testCompile 'org.assertj:assertj-core:3.10.0'
 }
 
 repositories {
-    jcenter()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
 }
 
 wrapper {
